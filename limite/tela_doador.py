@@ -1,4 +1,4 @@
-class TelaUsuario():
+class TelaDoador():
   
   def le_num_inteiro(self, mensagem=" ", ints_validos = None):
         while True:
@@ -16,21 +16,20 @@ class TelaUsuario():
   
   # fazer aqui tratamento dos dados, caso a entrada seja diferente do esperado
   def tela_opcoes(self):
-    print("-------- USUARIOS ----------")
+    print("-------- Doador ----------")
     print("Escolha a opcao")
-    print("1 - Incluir Usuario Doador")
-    print("2 - Incluir Usuario Adotante")
-    print("3 - Alterar Usuario")
-    print("4 - Listar Usuarios")
-    print("5 - Excluir Usuario")
+    print("1 - Incluir Doador")
+    print("2 - Alterar Doador")
+    print("3 - Listar Doadores")
+    print("4 - Excluir Doador")
     print("0 - Retornar")
 
-    opcao = self.le_num_inteiro("Escolha a opcao:", [0,1,2,3,4,5])
+    opcao = self.le_num_inteiro("Escolha a opcao:", [0,1,2,3,4])
     return opcao
 
   # fazer aqui tratamento dos dados, caso a entrada seja diferente do esperado
-  def pega_dados_usuario(self):
-    print("-------- DADOS USUARIO ----------")
+  def pega_dados_Doador(self):
+    print("-------- DADOS Doador ----------")
     nome = input("Nome: ")
     cpf = input("CPF: ")
     dt_nasc = input ("Data de Nascimento: ")
@@ -38,24 +37,24 @@ class TelaUsuario():
   
 
     return {"nome": nome, "cpf": cpf, "dt_nasc": dt_nasc, "endereco": endereco}
-
+  
   # fazer aqui tratamento dos dados, caso a entrada seja diferente do esperado
-  def mostra_usuario(self, dados_usuario):
-    print ("-----------LISTA DE USUÁRIOS-----------")
-    print("Nome: ", dados_usuario["nome"])
-    print("CPF: ", dados_usuario["cpf"])
-    print("Endereço: ", dados_usuario["endereco"])
-    print("Data de Nascimento: ", dados_usuario["dt_nasc"])
+  def mostra_Doador(self, dados_Doador):
+    print ("-----------LISTA DE DOADOR-----------")
+    print("Nome: ", dados_Doador["nome"])
+    print("CPF: ", dados_Doador["cpf"])
+    print("Endereço: ", dados_Doador["endereco"])
+    print("Data de Nascimento: ", dados_Doador["dt_nasc"])
    
     print("\n")
 
   # fazer aqui tratamento dos dados, caso a entrada seja diferente do esperado
-  def seleciona_usuario(self):
-    cpf = input("CPF do usuário que deseja selecionar: ")
+  def seleciona_Doador(self):
+    cpf = input("CPF do doador que deseja selecionar: ")
     return cpf
 
-  def verifica_usuario(self):
-    cpf = input("Digite o CPF do usuario: ")
+  def verifica_Doador(self):
+    cpf = input("Digite o CPF do Doador: ")
     return cpf    
 
   def mostra_mensagem(self, msg):

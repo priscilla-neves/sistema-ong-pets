@@ -1,13 +1,16 @@
+
 class Usuario:
   # fazer aqui tratamento dos dados, caso os parametros sejam diferentes do esperado
-  def __init__(self, nome: str, dt_nasc: str, cpf: int, endereco: str, usuario: str):
-    #if isinstance(nome, str):    
+  def __init__(self, nome: str, dt_nasc: str, cpf: int, endereco: str):
+    if isinstance(nome, str):    
       self.__nome = nome
-    #if isinstance(dt_nasc, str):  
+    if isinstance(dt_nasc, str):  
       self.__dt_nasc = dt_nasc
+    if isinstance(cpf, int):  
       self.__cpf = cpf
-      self.__endereco =endereco
-      self.__usuario = usuario
+    if isinstance(endereco, str):
+      self.__endereco = endereco
+ 
 
   @property
   def nome(self):
@@ -15,7 +18,8 @@ class Usuario:
 
   @nome.setter
   def nome(self, nome: str):
-    self.__nome = nome
+    if (isinstance(nome, str)):  
+      self.__nome = nome
 
   @property
   def dt_nasc(self):
@@ -23,7 +27,8 @@ class Usuario:
 
   @dt_nasc.setter
   def dt_nasc(self, dt_nasc: str):
-    self.__dt_nasc = dt_nasc
+    if (isinstance(dt_nasc, str)):
+      self.__dt_nasc = dt_nasc
 
   @property
   def cpf(self):
@@ -31,7 +36,8 @@ class Usuario:
 
   @cpf.setter
   def cpf(self, cpf: int):
-    self.__cpf = cpf
+    if (isinstance(cpf, int)):
+      self.__cpf = cpf
 
   @property
   def endereco(self):
@@ -39,12 +45,6 @@ class Usuario:
 
   @endereco.setter
   def endereco(self, endereco: str):
-    self.__endereco = endereco
+    if (isinstance(endereco, str)):
+      self.__endereco = endereco
 
-  @property
-  def usuario(self):
-      return self.__usuario
-  
-  @usuario.setter
-  def usuario(self, usuario: str):
-      self.__usuario = usuario
