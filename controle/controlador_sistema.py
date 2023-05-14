@@ -1,3 +1,5 @@
+from controle.controlador_cao import ControladorCao
+from controle.controlador_gato import ControladorGato
 from limite.tela_sistema import TelaSistema
 from controle.controlador_usuarios import ControladorUsuarios
 
@@ -6,11 +8,21 @@ class ControladorSistema:
 
     def __init__(self):
         self.__controlador_usuarios = ControladorUsuarios(self)
+        self.__controlador_gato = ControladorGato(self)
+        self.__controlador_cao = ControladorCao(self)
+        
         self.__tela_sistema = TelaSistema()
 
     @property
     def controlador_usuarios(self):
         return self.__controlador_usuarios
+    
+    @property
+    def controlador_gato(self):
+        return self.__controlador_gato
+    @property
+    def controlador_cao(self):
+        return self.__controlador_cao
 
     def inicializa_sistema(self):
         self.abre_tela()
@@ -18,6 +30,13 @@ class ControladorSistema:
     def cadastra_usuarios(self):
         # Chama o controlador de Usuarios
         self.__controlador_usuarios.abre_tela()
+    
+    def cadastra_gato(self):
+        # Chama o controlador de Usuarios
+        self.__controlador_gato.abre_tela()
+    def cadastra_cao(self):
+        # Chama o controlador de Usuarios
+        self.__controlador_cao.abre_tela()
 
     def login(self):
         # Chama o controlador de Usuarios
@@ -27,14 +46,14 @@ class ControladorSistema:
         exit(0)
 
     def abre_tela(self):
-        lista_opcoes = {1: self.cadastra_usuarios, 2: self.login}
+        lista_opcoes = {1: self.cadastra_usuarios, 2: self.cadastra_gato, 3: self.cadastra_cao}
         while True:
             opcao_escolhida = self.__tela_sistema.tela_opcoes()
             funcao_escolhida = lista_opcoes[opcao_escolhida]
             funcao_escolhida()
 
     def abre_tela_opcoes(self):
-        lista_opcoes = {1: self.cadastra_supermercado, 2: self.cadastra_categoria, 3: self.cadastra_produtos , 0: self.encerra_sistema}
+        lista_opcoes = {1: self.cadastra_gato, 0: self.encerra_sistema}
         while True:
             opcao_escolhida = self.__tela_sistema.tela_opcoes_principal()
             funcao_escolhida = lista_opcoes[opcao_escolhida]
