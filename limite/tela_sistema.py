@@ -14,14 +14,12 @@ class TelaSistema:
                 if ints_validos:
                     print("Valores válidos: ", ints_validos)
                     
-                    
     def tela_opcoes(self):
         print("-------- Sistema Doação e Adoção de Pets - Florianópolis ---------")
         print("Escolha sua opcao")
-        print("1 - Cadastrar Doador")
-        print("2 - Cadastrar Adotante")
-        print("3 - Login ")
-        opcao = self.le_num_inteiro("Escolha a opcao:", [1,2,3])
+        print("1 - Cadastrar Usuário")
+        print("2 - Login ")
+        opcao = self.le_num_inteiro("Escolha a opcao:", [1,2])
         return opcao
 
     def tela_opcoes_principal(self):

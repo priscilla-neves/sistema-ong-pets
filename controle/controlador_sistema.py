@@ -1,45 +1,33 @@
 from limite.tela_sistema import TelaSistema
-from controle.controlador_doador import ControladorDoador
-from controle.controlador_adotante import ControladorAdotante
+from controle.controlador_usuarios import ControladorUsuarios
 
 class ControladorSistema:
 
 
     def __init__(self):
-        self.__controlador_adotante = ControladorAdotante(self)
-        self.__controlador_doador = ControladorDoador(self)
+        self.__controlador_usuarios = ControladorUsuarios(self)
         self.__tela_sistema = TelaSistema()
 
     @property
-    def controlador_adotante(self):
-        return self.__controlador_adotante
-
-    @property
-    def controlador_doador(self):
-        return self.__controlador_doador
-
+    def controlador_usuarios(self):
+        return self.__controlador_usuarios
 
     def inicializa_sistema(self):
         self.abre_tela()
 
-    def cadastra_doador(self):
-        # Chama o controlador de doador
-        self.__controlador_doador.abre_tela()
-    
-    def cadastra_adotante(self):
+    def cadastra_usuarios(self):
         # Chama o controlador de Usuarios
-        self.__controlador_adotante.abre_tela()
+        self.__controlador_usuarios.abre_tela()
 
     def login(self):
         # Chama o controlador de Usuarios
-        self.__controlador_adotante.verifica_adotante()
-        
+        self.__controlador_usuarios.verifica_usuario()
 
     def encerra_sistema(self):
         exit(0)
 
     def abre_tela(self):
-        lista_opcoes = {1: self.cadastra_doador, 2: self.cadastra_adotante, 3: self.login}
+        lista_opcoes = {1: self.cadastra_usuarios, 2: self.login}
         while True:
             opcao_escolhida = self.__tela_sistema.tela_opcoes()
             funcao_escolhida = lista_opcoes[opcao_escolhida]
