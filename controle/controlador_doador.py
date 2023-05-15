@@ -1,13 +1,13 @@
-from limite.tela_usuario import TelaUsuario
+from limite.tela_doador import TelaDoador
 from entidade.Doador import Doador
-from entidade.Adotante import Adotante
 
-class ControladorUsuarios():
+
+class ControladorDoador():
   
   def __init__(self, controlador_sistema):
     self.__usuarios = []
     self.usuario_logado = None
-    self.__tela_usuario = TelaUsuario()
+    self.__tela_usuario = TelaDoador()
     self.__controlador_sistema = controlador_sistema
 
   def pega_usuario_por_cpf(self, cpf: int):
@@ -18,16 +18,10 @@ class ControladorUsuarios():
 
   def incluir_usuario_doador(self):
     dados_usuario = self.__tela_usuario.pega_dados_usuario()
-    usuario = Doador(dados_usuario["nome"], dados_usuario["endereco"], dados_usuario["cpf"], "CPF", "")
-    self.__usuarios.append(usuario)
-  
-  def incluir_usuario_adotante(self):  
-    dados_usuario = self.__tela_usuario.pega_dados_usuario()
-    usuario = Adotante(dados_usuario["nome"], dados_usuario["endereco"], dados_usuario["cpf"], "CPF", "")
+    usuario = Doador(dados_usuario["nome"], dados_usuario["endereco"], dados_usuario["cpf"], dados_usuario["dt_nasc"])
     self.__usuarios.append(usuario)
 
-  def alterar_usuario(self):
-    usuario_logado = self.__controlador_usuario.usuario_logado    
+  def alterar_usuario(self): 
     self.lista_usuarios()
     cpf_usuario = self.__tela_usuario.seleciona_usuario()
     usuario = self.pega_usuario_por_cpf(cpf_usuario)
@@ -38,11 +32,10 @@ class ControladorUsuarios():
       usuario.endereco = novos_dados_usuario["endereco"]
       usuario.cpf = novos_dados_usuario["cpf"]
       usuario.dt_nasc = novos_dados_usuario["dt_nasc"]
-      usuario.usuario = usuario_logado
     
       self.lista_usuarios()
     else:
-      self.__tela_usuario.mostra_mensagem("ATENCAO: Usuario não existente")
+      self.__tela_usuario.mostra_mensagem("ATENCAO: Doador não existente")
 
   # Sugestão: se a lista estiver vazia, mostrar a mensagem de lista vazia
   def lista_usuarios(self):
@@ -57,15 +50,15 @@ class ControladorUsuarios():
     if(usuario is not None):
       self.__usuarios.remove(usuario)
       self.lista_usuarios()
-      self.__tela_usuario.mostra_mensagem("Usuario excluído")
+      self.__tela_usuario.mostra_mensagem("Doador excluído")
     else:
-      self.__tela_usuario.mostra_mensagem("ATENCAO: Usuario não existente")
+      self.__tela_usuario.mostra_mensagem("ATENCAO: Doador não existente")
 
   def retornar(self):
     self.__controlador_sistema.abre_tela()
 
   def abre_tela(self):
-    lista_opcoes = {1: self.incluir_usuario_doador,2: self.incluir_usuario_adotante,  3: self.alterar_usuario, 4: self.lista_usuarios, 5: self.excluir_usuario, 0: self.retornar}
+    lista_opcoes = {1: self.incluir_usuario_doador,  2: self.alterar_usuario, 3: self.lista_usuarios, 4: self.excluir_usuario, 0: self.retornar}
     continua = True
     while continua:
       lista_opcoes[self.__tela_usuario.tela_opcoes()]()
@@ -74,9 +67,7 @@ class ControladorUsuarios():
     cpf_usuario = self.__tela_usuario.verifica_usuario()
     usuario = self.pega_usuario_por_cpf(cpf_usuario)
     if (usuario == None):
-      self.__tela_usuario.mostra_mensagem("ATENCAO: Usuario não existente, realize o cadastro.")
+      self.__tela_usuario.mostra_mensagem("ATENCAO: Doador não existente, realize o cadastro.")
       self.abre_tela()
     else :
-      self.__tela_usuario.mostra_mensagem("Login Realizado com sucesso!")
-      self.usuario_logado = usuario.cpf
       self.__controlador_sistema.abre_tela_opcoes()

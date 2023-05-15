@@ -17,18 +17,10 @@ class TelaSistema:
     def tela_opcoes(self):
         print("-------- Sistema Doação e Adoção de Pets - Florianópolis ---------")
         print("Escolha sua opcao")
-        print("1 - Usuário")
-        print("2 - Gato ")
-        print("3 - Cão ")
-        opcao = self.le_num_inteiro("Escolha a opcao:", [1,2,3])
+        print("1 - Doaodor")
+        print("2 - Adotante")
+        print("3 - Gato ")
+        print("4 - Cão ")
+        opcao = self.le_num_inteiro("Escolha a opcao:", [1,2,3,4])
         return opcao
 
-    def tela_opcoes_principal(self):
-        print("-------- Sistema Doação e Adoção de Pets - Florianópolis ---------")
-        print("Escolha sua opcao")
-        print("1 - Gato")
-        print("2 - Cão")
-        print("3 - Produto")
-        print("0 - Finalizar sistema")
-        opcao = self.le_num_inteiro("Escolha a opcao:", [0,1,2,3])
-        return opcao        

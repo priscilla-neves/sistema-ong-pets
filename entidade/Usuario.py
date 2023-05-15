@@ -1,13 +1,16 @@
-class Usuario:
+from entidade.AbstractUsuario import AbstractUsuario
+
+
+class Usuario(AbstractUsuario):
   # fazer aqui tratamento dos dados, caso os parametros sejam diferentes do esperado
-  def __init__(self, nome: str, dt_nasc: str, cpf: int, endereco: str, usuario: str):
+  def __init__(self, nome: str, dt_nasc: str, cpf: int, endereco: str):
     #if isinstance(nome, str):    
       self.__nome = nome
     #if isinstance(dt_nasc, str):  
       self.__dt_nasc = dt_nasc
       self.__cpf = cpf
       self.__endereco =endereco
-      self.__usuario = usuario
+    
 
   @property
   def nome(self):
@@ -41,10 +44,3 @@ class Usuario:
   def endereco(self, endereco: str):
     self.__endereco = endereco
 
-  @property
-  def usuario(self):
-      return self.__usuario
-  
-  @usuario.setter
-  def usuario(self, usuario: str):
-      self.__usuario = usuario
